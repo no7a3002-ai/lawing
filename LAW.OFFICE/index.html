@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Law Office</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.65),
+          rgba(0, 0, 0, 0.65)
+        ),
+        url('images/lawyer.jpg') center/cover no-repeat fixed;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    nav button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1em;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav button:hover {
+      color: #ffcc00;
+    }
+
+    .lang-select {
+      background: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    section {
+      display: none;
+      position: absolute;
+      top: 58%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      width: 85%;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translate(-50%, -60%);}
+      to {opacity: 1; transform: translate(-50%, -50%);}
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 1.8em;
+      color: #ffcc00;
+    }
+
+    p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+      font-size: 1.05em;
+    }
+
+    .social a {
+      margin: 10px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.3em;
+      transition: color 0.3s;
+    }
+
+    .social a:hover {
+      color: #ffcc00;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 5px 15px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      color: #fff;
+    }
+
+    /* ✨ العنوان الرئيسي (Justice & Integrity) */
+    .hero-text {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #ffcc00;
+      font-size: 2.6em;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      opacity: 0;
+      animation: fadeInText 2.5s ease forwards;
+      z-index: 5;
+    }
+
+    @keyframes fadeInText {
+      from {opacity: 0; transform: translate(-50%, -60%);}
+      to {opacity: 1; transform: translate(-50%, -50%);}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="title">Law Office</h1>
+    <nav>
+      <button onclick="showSection('about')">About</button>
+      <button onclick="showSection('services')">Services</button>
+      <button onclick="showSection('contact')">Contact</button>
+      <select class="lang-select" id="lang" onchange="changeLang()">
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="ar">AR</option>
+      </select>
+    </nav>
+  </header>
+
+  <div class="hero-text" id="hero">Justice & Integrity</div>
+
+  <section id="about" class="active">
+    <h2 id="aboutTitle">About Us</h2>
+    <p id="aboutText">
+      We are a professional law firm providing expert legal consultation and representation for clients in various fields of law.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2 id="servicesTitle">Our Services</h2>
+    <p id="servicesText">
+      - Legal consulting<br>
+      - Civil and criminal cases<br>
+      - Corporate and business law<br>
+      - Family and inheritance law
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2 id="contactTitle">Contact Us</h2>
+    <p id="contactText">
+      Feel free to reach us through any of the following platforms:
+    </p>
+    <div class="social">
+      <a href="https://wa.me/963962123548" target="_blank">WhatsApp</a> |
+      <a href="https://www.instagram.com/smjd65?igsh=ajFxbGg2bjhrNHNp" target="_blank">Instagram</a> |
+      <a href="https://telegram.org/dl" target="_blank">Telegram</a> |
+      <a href="https://www.facebook.com/smjd65?mibextid=ZbWKwL" target="_blank">Facebook</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Law Office. All rights reserved.
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    const translations = {
+      en: {
+        title: "Law Office",
+        hero: "Justice & Integrity",
+        aboutTitle: "About Us",
+        aboutText: "We are a professional law firm providing expert legal consultation and representation for clients in various fields of law.",
+        servicesTitle: "Our Services",
+        servicesText: "- Legal consulting<br>- Civil and criminal cases<br>- Corporate and business law<br>- Family and inheritance law",
+        contactTitle: "Contact Us",
+        contactText: "Feel free to reach us through any of the following platforms:"
+      },
+      tr: {
+        title: "Hukuk Bürosu",
+        hero: "Adalet ve Dürüstlük",
+        aboutTitle: "Hakkımızda",
+        aboutText: "Müşterilerimize çeşitli hukuk alanlarında profesyonel danışmanlık ve temsil hizmetleri sunan bir hukuk bürosuyuz.",
+        servicesTitle: "Hizmetlerimiz",
+        servicesText: "- Hukuki danışmanlık<br>- Medeni ve ceza davaları<br>- Şirketler ve ticaret hukuku<br>- Aile ve miras hukuku",
+        contactTitle: "Bize Ulaşın",
+        contactText: "Aşağıdaki platformlardan herhangi biriyle bizimle iletişime geçebilirsiniz:"
+      },
+      ar: {
+        title: "مكتب المحاماة",
+        hero: "العدالة والنزاهة",
+        aboutTitle: "من نحن",
+        aboutText: "نحن مكتب محاماة محترف نقدم استشارات قانونية وتمثيلاً قانونياً متخصصاً في مختلف المجالات.",
+        servicesTitle: "خدماتنا",
+        servicesText: "- الاستشارات القانونية<br>- القضايا المدنية والجزائية<br>- قانون الشركات والأعمال<br>- قانون الأسرة والإرث",
+        contactTitle: "تواصل معنا",
+        contactText: "يمكنك التواصل معنا عبر أي من المنصات التالية:"
+      }
+    };
+
+    function changeLang() {
+      const lang = document.getElementById("lang").value;
+      const t = translations[lang];
+      for (const key in t) {
+        if (document.getElementById(key))
+          document.getElementById(key).innerHTML = t[key];
+      }
+    }
+  </script>
+</body>
+</html>
